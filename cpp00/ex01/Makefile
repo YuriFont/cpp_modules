@@ -1,6 +1,8 @@
-NAME = megaphone
-FILE = megaphone.cpp
-C++ = g++
+NAME = phonebook
+FILES = main.cpp\
+		Contact.cpp\
+		PhoneBook.cpp
+C++ = c++
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 STD = -std=c++98
@@ -8,7 +10,7 @@ STD = -std=c++98
 all: $(NAME)
 
 $(NAME):
-		$(C++) $(CFLAGS) $(STD) $(FILE) -o $(NAME)
+		$(C++) $(CFLAGS) $(STD) $(FILES) -o $(NAME)
 
 clean:
 		$(RM) $(NAME)
