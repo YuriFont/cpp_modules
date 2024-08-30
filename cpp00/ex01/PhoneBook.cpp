@@ -10,30 +10,46 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+#include <iostream>
+#include "Contact.hpp"
+#include "PhoneBook.hpp"
 
-void	PhoneBook::addContact(void) {
-	std::string	firstName;
-	std::string	lastName;
-	std::string	nickname;
-	std::string	phoneNumber;
-	std::string	darkestSecret;
+PhoneBook::PhoneBook() : numContacts(0) {}
 
-	std::cout << "First name: ";
-	std::cin >> firstName;
-	std::cout << std::endl;
-	std::cout << "Last name: ";
-	std::cin >> lastName;
-	std::cout << std::endl;
-	std::cout << "Nickname: ";
-	std::cin >> nickname;
-	std::cout << std::endl;
-	std::cout << "Phone number: ";
-	std::cin >> phoneNumber;
-	std::cout << std::endl;
-	std::cout << "Darkest secret: ";
-	std::cin >> darkestSecret;
-	std::cout << std::endl;
+int	PhoneBook::getNumContacts(void) {
+	return numContacts;
+}
 
-	this->phoneBookList.add(Contact::Contact(firstName, lastName, nickname, phoneNumber, darkestSecret));
+const Contact&	PhoneBook::getContactByIndex(int index) {
+	if (index > -1 && index < MAX_CONTACTS)
+		return contacts[index];
+	else
+		throw std::out_of_range("Index out of range");
+}
+
+const Contact&	PhoneBook::creatContact(void) {
+	std::string firstName, lastName, nickname, phoneNumber, darkestSecret;
+
+	std::cout << "First Name: ";
+    std::cin >> firstName;
+    std::cout << "Last Name: ";
+    std::cin >> lastName;
+    std::cout << "Nickname: ";
+    std::cin >> nickname;
+    std::cout << "Phone Number: ";
+    std::cin >> phoneNumber;
+    std::cout << "Darkest Secret: ";
+    std::cin >> darkestSecret;
+
+	Contact newContact(firstName, lastName, nickname, phoneNumber, darkestSecret);
+	Contact& refContact = newContact;
+	return refContact;
+}
+
+void		PhoneBook::addContact(const Contact& newContact) {
+	if (numContacts < MAX_CONTACTS) {
+		contacts[numContacts++] = newContact;
+	} else {
+		contacts[0] = newContact;
+	}
 }

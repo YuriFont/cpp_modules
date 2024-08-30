@@ -10,13 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+#include <iostream>
+#include "PhoneBook.hpp"
+#include "Contact.hpp"
 
 int	main(void)
 {
-	PhoneBook pb;
-
-	pb.addContact();
-
+	
 	return 0;
 }
