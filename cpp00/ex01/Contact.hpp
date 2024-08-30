@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:17:40 by yufonten          #+#    #+#             */
-/*   Updated: 2024/08/30 09:25:52 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/08/30 13:16:58 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Contact {
         std::string	getFirstName(void);
         void        setFirstName(std::string firstName);
 		std::string	getLastName(void);
-        void        setLasttName(std::string lastName);
+        void        setLastName(std::string lastName);
 		std::string	getNickname(void);
         void        setNickname(std::string nickname);
         std::string	getPhoneNumber(void);

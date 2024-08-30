@@ -16,6 +16,13 @@
 
 int	main(void)
 {
-	
+	PhoneBook pb;
+
+	pb.add();
+
+	Contact* ct = pb.getContactByIndex(0);
+
+	std::cout << ct->getFirstName() << std::endl;
+
 	return 0;
 }

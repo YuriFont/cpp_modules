@@ -16,40 +16,46 @@
 
 PhoneBook::PhoneBook() : numContacts(0) {}
 
-int	PhoneBook::getNumContacts(void) {
-	return numContacts;
+PhoneBook::~PhoneBook() {}
+
+int			PhoneBook::getNumContacts(void) {
+	return this->numContacts;
 }
 
-const Contact&	PhoneBook::getContactByIndex(int index) {
-	if (index > -1 && index < MAX_CONTACTS)
-		return contacts[index];
-	else
-		throw std::out_of_range("Index out of range");
+Contact*	PhoneBook::getContactByIndex(int index) {
+	if ((index > -1 && index < 8) && index <= this->numContacts)
+		return &this->contacts[index];
+	return NULL;
 }
 
-const Contact&	PhoneBook::creatContact(void) {
-	std::string firstName, lastName, nickname, phoneNumber, darkestSecret;
+void		PhoneBook::add(void) {
+	std::string	fn;
+	std::string	ln;
+	std::string	nc;
+	std::string	pn;
+	std::string	ds;
+	int			index;
 
-	std::cout << "First Name: ";
-    std::cin >> firstName;
-    std::cout << "Last Name: ";
-    std::cin >> lastName;
-    std::cout << "Nickname: ";
-    std::cin >> nickname;
-    std::cout << "Phone Number: ";
-    std::cin >> phoneNumber;
-    std::cout << "Darkest Secret: ";
-    std::cin >> darkestSecret;
+	std::cout << "First name: ";
+	std::cin >> fn;
+	std::cout << "Last name: ";
+	std::cin >> ln;
+	std::cout << "Nickname: ";
+	std::cin >> nc;
+	std::cout << "Phone number: ";
+	std::cin >> pn;
+	std::cout << "Darkest secret: ";
+	std::cin >> ds;
 
-	Contact newContact(firstName, lastName, nickname, phoneNumber, darkestSecret);
-	Contact& refContact = newContact;
-	return refContact;
-}
-
-void		PhoneBook::addContact(const Contact& newContact) {
-	if (numContacts < MAX_CONTACTS) {
-		contacts[numContacts++] = newContact;
-	} else {
-		contacts[0] = newContact;
-	}
+	if (fn.empty() || ln.empty() || nc.empty() || pn.empty() || ds.empty())
+		return ;
+	index = 0;
+	if (this->numContacts > -1 && this->numContacts < 8)	
+		index = this->numContacts;
+	this->contacts[index].setFirstName(fn);
+	this->contacts[index].setLastName(ln);
+	this->contacts[index].setNickname(nc);
+	this->contacts[index].setPhoneNumber(pn);
+	this->contacts[index].setDarkestSecret(ds);
+	this->numContacts++;
 }

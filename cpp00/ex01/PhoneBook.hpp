@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 15:49:22 by yufonten          #+#    #+#             */
-/*   Updated: 2024/08/29 20:31:39 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/08/30 16:16:59 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,17 @@
 
 #include "Contact.hpp"
 
-#define MAX_CONTACTS 8
-
 class PhoneBook {
 
 	private:
-		Contact contacts[MAX_CONTACTS];
+		Contact contacts[8];
 		int		numContacts;
-
 	public:
 		PhoneBook();
-
-		int				getNumContacts(void);
-		const Contact&	getContactByIndex(int index);
-		const Contact&	creatContact(void);
-		void			addContact(const Contact& newContact);
-		void			search(void);
-		void			exit(void);
-
+		~PhoneBook();
+		int		getNumContacts(void);
+		Contact	*getContactByIndex(int index);
+		void	add(void);
 };
 
 #endif
