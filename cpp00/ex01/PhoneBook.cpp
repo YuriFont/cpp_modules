@@ -29,26 +29,26 @@ Contact*	PhoneBook::getContactByIndex(int index) {
 }
 
 void		PhoneBook::add(void) {
-	std::string	fn;
-	std::string	ln;
-	std::string	nc;
-	std::string	pn;
-	std::string	ds;
+	std::string	fn, ln, nc, pn, ds;
 	int			index;
 
-	std::cout << "First name: ";
-	std::cin >> fn;
+	std::cout << std::endl << "First name: ";
+	std::getline(std::cin, fn);
 	std::cout << "Last name: ";
-	std::cin >> ln;
+	std::getline(std::cin, ln);
 	std::cout << "Nickname: ";
-	std::cin >> nc;
+	std::getline(std::cin, nc);
 	std::cout << "Phone number: ";
-	std::cin >> pn;
+	std::getline(std::cin, pn);
 	std::cout << "Darkest secret: ";
-	std::cin >> ds;
+	std::getline(std::cin, ds);
+	std::cout << std::endl;
 
-	if (fn.empty() || ln.empty() || nc.empty() || pn.empty() || ds.empty())
+	if (fn.empty() || ln.empty() || nc.empty() || pn.empty() || ds.empty()) {
+		std::cout << std::endl << "Please, you need to fill in all the fields to add a contact!!!" << std::endl;
 		return ;
+	}
+
 	index = 0;
 	if (this->numContacts > -1 && this->numContacts < 8)	
 		index = this->numContacts;
@@ -58,4 +58,66 @@ void		PhoneBook::add(void) {
 	this->contacts[index].setPhoneNumber(pn);
 	this->contacts[index].setDarkestSecret(ds);
 	this->numContacts++;
+	std::cout << "Contact added successfully!!!" << std::endl << std::endl;
+}
+
+void		PhoneBook::addWord(std::string word) {
+	int	size;
+
+	std::cout << "|"; 
+	if (word.size() > 10) {
+		word.resize(9);
+		std::cout << word << ".";
+		return ;
+	}
+	size = 10 - word.size();
+	while (size > 0) {
+		std::cout << " ";
+		size--;
+	}
+	std::cout << word;
+}
+
+void		PhoneBook::showContact(Contact* c, int index) {
+	std::cout << std::endl << "-------------------------------------------------------------------" << std::endl;
+	std::cout << "|     Index|First Name| Last Name|  Nickname|Phone Num.|Darkest S.|" << std::endl;
+	std::cout << "-------------------------------------------------------------------" << std::endl;
+	std::cout << "|         " << index;
+	this->addWord(c->getFirstName());
+	this->addWord(c->getLastName());
+	this->addWord(c->getNickname());
+	this->addWord(c->getPhoneNumber());
+	this->addWord(c->getDarkestSecret());
+	std::cout << "|" << std::endl;
+	std::cout << "-------------------------------------------------------------------" << std::endl << std::endl;
+}
+
+void		PhoneBook::search(void) {
+	std::string	str;
+	Contact		*c;
+	int			i;
+
+	i = 0;
+	std::cout << std::endl << "---------------------------------------------" << std::endl;
+	std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
+	std::cout << "---------------------------------------------" << std::endl;
+	while (i < this->numContacts) {
+		c = this->getContactByIndex(i);
+		std::cout << "|         " << i;
+		this->addWord(c->getFirstName());
+		this->addWord(c->getLastName());
+		this->addWord(c->getNickname());
+		std::cout << "|" << std::endl;
+		std::cout << "---------------------------------------------" << std::endl;
+		i++;
+	}
+	std::cout << std::endl << "Enter the index of the contact you want to see: ";
+	std::cin >> i;
+	std::cin.ignore();
+	c = this->getContactByIndex(i);
+	if (!c) {
+		std::cout << std::endl << "This index not exist!!!" << std::endl << std::endl;
+		return ;
+	}
+	this->showContact(c, i);
 }

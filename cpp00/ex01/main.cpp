@@ -16,13 +16,21 @@
 
 int	main(void)
 {
-	PhoneBook pb;
+	PhoneBook 	pb;
+	std::string	input;
 
-	pb.add();
+	while (1) {
+		std::cout << std::endl << "What action do you want to perform in the phone book? (Ex: ADD, SEARCH, EXIT)" << std::endl;
+		std::getline(std::cin, input);
 
-	Contact* ct = pb.getContactByIndex(0);
-
-	std::cout << ct->getFirstName() << std::endl;
-
+		if (input == "ADD")
+			pb.add();
+		else if (input == "SEARCH")
+			pb.search();
+		else if (input == "EXIT")
+			break ;
+		else
+			std::cout << std::endl << "This is a invalid action!!!" << std::endl;
+	}
 	return 0;
 }
