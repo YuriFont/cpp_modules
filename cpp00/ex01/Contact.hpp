@@ -6,12 +6,12 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:17:40 by yufonten          #+#    #+#             */
-/*   Updated: 2024/08/30 13:16:58 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/09/01 17:11:22 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-#define CONTACT_HPP
+#ifndef __CONTACT_HPP__
+#define __CONTACT_HPP__
 
 class Contact {
 
