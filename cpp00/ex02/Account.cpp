@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:47:29 by yufonten          #+#    #+#             */
-/*   Updated: 2024/09/04 16:57:35 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/09/04 20:06:15 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	Account::makeDeposit(int deposit) {
 	std::cout << "p_amount:" << this->_amount << ";";
 	std::cout << "deposit:" << deposit << ";";
 	this->_amount += deposit;
+	Account::_totalAmount += deposit;
 	std::cout << "amount:" << this->_amount << ";";
 	std::cout << "nb_deposits:" << this->_nbDeposits << std::endl;
 }
@@ -96,6 +97,7 @@ bool	Account::makeWithdrawal(int withdrawal) {
 	}
 	std::cout << withdrawal << ";";
 	this->_amount -= withdrawal;
+	Account::_totalAmount -= withdrawal;
 	std::cout << "amount:" << this->_amount << ";";
 	this->_nbWithdrawals++;
 	std::cout << "nb_withdrawals:" << this->_nbWithdrawals << std::endl;
@@ -108,5 +110,9 @@ int		Account::checkAmount(void) const {
 }
 
 void	Account::displayStatus(void) const {
-	
+	Account::_displayTimestamp();
+	std::cout << "index:" << this->_accountIndex << ";";
+	std::cout << "amount:" << this->_amount << ";";
+	std::cout << "deposits:" << this->_nbDeposits << ";";
+	std::cout << "withdrawals:" << this->_nbWithdrawals << std::endl;
 }
