@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:47:29 by yufonten          #+#    #+#             */
-/*   Updated: 2024/09/03 16:46:54 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/09/04 16:57:35 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,45 @@ int		Account::getNbWithdrawals(void) {
 void	Account::displayAccountsInfos(void) {
 	Account::_displayTimestamp();
 	std::cout << "accounts:" << Account::getNbAccounts() << ";";
-	std::cout << "";
+	std::cout << "total:" << Account::getTotalAmount() << ";";
+	std::cout << "deposits:" << Account::getNbDeposits() << ";";
+	std::cout << "withdrawals:" << Account::getNbWithdrawals() << std::endl;
+}
+
+void	Account::makeDeposit(int deposit) {
+	Account::_displayTimestamp();
+	this->_nbDeposits++;
+	Account::_totalNbDeposits++;
+	std::cout << "index:" << this->_accountIndex << ";";
+	std::cout << "p_amount:" << this->_amount << ";";
+	std::cout << "deposit:" << deposit << ";";
+	this->_amount += deposit;
+	std::cout << "amount:" << this->_amount << ";";
+	std::cout << "nb_deposits:" << this->_nbDeposits << std::endl;
+}
+
+bool	Account::makeWithdrawal(int withdrawal) {
+	Account::_displayTimestamp();
+	std::cout << "index:" << this->_accountIndex << ";";
+	std::cout << "p_amount:" << this->_amount << ";";
+	std::cout << "withdrawal:";
+	if (withdrawal > this->_amount) {
+		std::cout << "refused" << std::endl;
+		return false;
+	}
+	std::cout << withdrawal << ";";
+	this->_amount -= withdrawal;
+	std::cout << "amount:" << this->_amount << ";";
+	this->_nbWithdrawals++;
+	std::cout << "nb_withdrawals:" << this->_nbWithdrawals << std::endl;
+	Account::_totalNbWithdrawals++;
+	return true;
+}
+
+int		Account::checkAmount(void) const {
+	return this->_amount;
+}
+
+void	Account::displayStatus(void) const {
+	
 }
