@@ -23,7 +23,7 @@ int			PhoneBook::getNumContacts(void) {
 }
 
 Contact*	PhoneBook::getContactByIndex(int index) {
-	if ((index > -1 && index < 8) && index <= this->numContacts)
+	if ((index > -1 && index < 8) && index < this->numContacts)
 		return &this->contacts[index];
 	return NULL;
 }
