@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include <iostream>
+#include <sstream>
+#include <string>
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
@@ -101,7 +103,7 @@ void		PhoneBook::search(void) {
 	std::cout << std::endl << "---------------------------------------------" << std::endl;
 	std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
 	std::cout << "---------------------------------------------" << std::endl;
-	while (i < this->numContacts) {
+	while (i < this->numContacts && i < 8) {
 		c = this->getContactByIndex(i);
 		std::cout << "|         " << i;
 		this->addWord(c->getFirstName());
@@ -112,9 +114,8 @@ void		PhoneBook::search(void) {
 		i++;
 	}
 	std::cout << std::endl << "Enter the index of the contact you want to see: ";
-	std::cin >> i;
-	std::cin.ignore();
-	c = this->getContactByIndex(i);
+	std::getline(std::cin, str);
+	c = this->getContactByIndex(str[0] - '0');
 	if (!c) {
 		std::cout << std::endl << "This index not exist!!!" << std::endl << std::endl;
 		return ;
