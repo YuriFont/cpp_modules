@@ -16,12 +16,20 @@
 
 HumanB::HumanB(std::string name) {
     this->name = name;
+    this->weapon = NULL;
+}
+
+HumanB::~HumanB(void) {
+	std::cout << this->name << " died!!!" << std::endl;
 }
 
 void		HumanB::attack(void) {
-    std::cout << this->name << " attacks with their " << this->weapon.getType() << std::endl;
+    if (this->weapon)
+        std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
+    else
+        std::cout << this->name << " is unarmed!!!" << std::endl;
 }
 
-void        HumanB::setWeapon(const Weapon& weapon) {
-    this->weapon = weapon;
+void        HumanB::setWeapon(Weapon& weapon) {
+    this->weapon = &weapon;
 }
