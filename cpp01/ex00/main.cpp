@@ -23,4 +23,6 @@ int main(void) {
     randomChump("Thaís");
     
     delete zPtr;
+
+    return (0);
 }
