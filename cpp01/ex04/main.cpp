@@ -15,7 +15,7 @@
 
 int	main(int ac, char **av) {
 	if (ac != 4) {
-		std::cout << "The program only works with three arguments!!!";
+		std::cout << "The program only works with three arguments!!!\n";
 		return 1;
 	}
 
