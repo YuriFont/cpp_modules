@@ -5,23 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/08 17:19:53 by yufonten          #+#    #+#             */
-/*   Updated: 2024/09/08 17:19:53 by yufonten         ###   ########.fr       */
+/*   Created: 2025/02/05 19:34:50 by yufonten          #+#    #+#             */
+/*   Updated: 2025/02/05 19:34:50 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "ReplaceInFile.hpp"
+#include "Harl.hpp"
 
-int	main(int ac, char **av) {
-	if (ac != 4) {
-		std::cout << "The program only works with three arguments!!!" << std::endl;
-		return 1;
-	}
+int	main(void) {
+	Harl harl;
 
-	ReplaceInFile rp(av[1], av[2], av[3]);
-
-	rp.makeReplacement();
+	harl.complain("DEBUG");
+	harl.complain("INFO");
+	harl.complain("WARNING");
+	harl.complain("ERROR");
+	harl.complain("Yuri");
+	harl.complain("INVALID");
 
 	return 0;
 }

@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/08 17:19:53 by yufonten          #+#    #+#             */
-/*   Updated: 2024/09/08 17:19:53 by yufonten         ###   ########.fr       */
+/*   Created: 2025/02/05 11:12:19 by yufonten          #+#    #+#             */
+/*   Updated: 2025/02/05 11:12:19 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef	__HARL_HPP__
+#define	__HARL_HPP__
 #include <iostream>
-#include "ReplaceInFile.hpp"
 
-int	main(int ac, char **av) {
-	if (ac != 4) {
-		std::cout << "The program only works with three arguments!!!" << std::endl;
-		return 1;
-	}
+class Harl {
 
-	ReplaceInFile rp(av[1], av[2], av[3]);
+	private:
 
-	rp.makeReplacement();
+		void	debug(void);
+		void	info(void);
+		void	warning(void);
+		void	error(void);
 
-	return 0;
-}
+	public:
+
+		Harl(void);
+		~Harl(void);
+		void	complain(std::string level);
+
+};
+
+#endif
