@@ -1,5 +1,6 @@
 NAME = fixed
-FILES = main.cpp
+FILES = main.cpp\
+		Fixed.cpp
 CP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
