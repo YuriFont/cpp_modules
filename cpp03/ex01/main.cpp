@@ -11,11 +11,11 @@
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
-
+#include "ScavTrap.hpp"
 int main(void) {
 
-    ClapTrap a;
-    ClapTrap b("Androide 17");
+    ScavTrap a;
+    ScavTrap b("Androide 17");
 
     a.attack("Androide 17");
     b.attack("Nameless");
@@ -34,14 +34,6 @@ int main(void) {
     a.attack("Androide 17");
     a.attack("Androide 17");
     a.attack("Androide 17");
-
-    ClapTrap c(a);
-
-    c.attack("Enemy 1");
-
-    b = a;
-
-    b.attack("Enemy 2");
 
     return 0;
 }
