@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main(void) {
-    ClapTrap a;
+    DiamondTrap a;
     std::cout << std::endl;
-    ClapTrap b("Androide 17");
+    DiamondTrap b("Androide 17");
     std::cout << std::endl;
     a.attack("Androide 17");
     std::cout << std::endl;
@@ -28,6 +28,8 @@ int main(void) {
     b.attack("Nameless");
     std::cout << std::endl;
     a.attack("Androide 17");
+    std::cout << std::endl;
+    b.whoAmI();
     std::cout << std::endl;
     return 0;
 }

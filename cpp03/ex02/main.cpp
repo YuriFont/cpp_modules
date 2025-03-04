@@ -10,30 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
+
 int main(void) {
-
-    ScavTrap a;
-    ScavTrap b("Androide 17");
-
+    FragTrap a;
+    std::cout << std::endl;
+    FragTrap b("Androide 17");
+    std::cout << std::endl;
     a.attack("Androide 17");
+    std::cout << std::endl;
     b.attack("Nameless");
-
+    std::cout << std::endl;
     a.beRepaired(10);
+    std::cout << std::endl;
     b.takeDamage(10);
-
+    std::cout << std::endl;
     b.attack("Nameless");
-
+    std::cout << std::endl;
     a.attack("Androide 17");
-    a.attack("Androide 17");
-    a.attack("Androide 17");
-    a.attack("Androide 17");
-    a.attack("Androide 17");
-    a.attack("Androide 17");
-    a.attack("Androide 17");
-    a.attack("Androide 17");
-    a.attack("Androide 17");
-
+    std::cout << std::endl;
+    b.highFivesGuys();
+    std::cout << std::endl;
     return 0;
 }

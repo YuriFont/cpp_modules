@@ -13,8 +13,9 @@
 #ifndef __SCAVTRAP_HPP__
 #define __SCAVTRAP_HPP__
 #include "ClapTrap.hpp"
+#define ScavTrap_energyPoints 50
 
-class ScavTrap: public ClapTrap {
+class ScavTrap: virtual public ClapTrap {
 
     public:
 
