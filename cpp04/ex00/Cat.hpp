@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/04 23:52:36 by yufonten          #+#    #+#             */
-/*   Updated: 2025/03/04 23:52:36 by yufonten         ###   ########.fr       */
+/*   Created: 2025/03/05 22:34:30 by yufonten          #+#    #+#             */
+/*   Updated: 2025/03/05 22:34:30 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
-#include "Cat.hpp"
+#ifndef __CAT_HPP__
+#define __CAT_HPP__
+#include "Animal.hpp"
 
-int main(void) {
-    const Animal* meta = new Animal();
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
-    i->makeSound(); //will output the cat sound!
-    j->makeSound();
-    meta->makeSound();
+class Cat: public Animal {
 
-    return 0;
-}
+    public:
+
+        Cat(void);
+        Cat(const Cat &cat);
+        Cat &operator=(const Cat &cat);
+        ~Cat(void);
+        virtual void    makeSound(void) const;
+
+};
+
+#endif

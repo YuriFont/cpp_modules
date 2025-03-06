@@ -1,5 +1,8 @@
-NAME = diamondtrap
-FILES = main.cpp
+NAME = animals
+FILES = main.cpp\
+		Animal.cpp\
+		Dog.cpp\
+		Cat.cpp
 CP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
