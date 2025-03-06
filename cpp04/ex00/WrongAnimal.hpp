@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/05 00:12:40 by yufonten          #+#    #+#             */
-/*   Updated: 2025/03/05 00:12:40 by yufonten         ###   ########.fr       */
+/*   Created: 2025/03/06 12:42:54 by yufonten          #+#    #+#             */
+/*   Updated: 2025/03/06 12:42:54 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __ANIMAL_HPP__
-#define __ANIMAL_HPP__
+#ifndef __WRONGANIMAL_HPP__
+#define __WRONGANIMAL_HPP__
 #include <iostream>
 
-class Animal {
+class WrongAnimal {
 
     protected:
 
@@ -22,12 +22,12 @@ class Animal {
 
     public:
 
-        Animal(void);
-        Animal(const Animal &animal);
-        Animal  &operator=(const Animal &animal);
-        virtual ~Animal(void);
-        virtual void    makeSound(void) const;
-        std::string     getType(void) const;
+        WrongAnimal(void);
+        WrongAnimal(const WrongAnimal &wrongAnimal);
+        WrongAnimal &operator=(const WrongAnimal &wrongAnimal);
+        virtual ~WrongAnimal(void);
+        void    makeSound(void) const;
+        std::string getType(void) const;
 
 };
 
