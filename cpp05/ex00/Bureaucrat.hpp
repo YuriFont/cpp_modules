@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 16:49:14 by yufonten          #+#    #+#             */
-/*   Updated: 2025/04/27 13:53:17 by yufonten         ###   ########.fr       */
+/*   Updated: 2025/04/29 09:10:49 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ class Bureaucrat {
 
         class GradeTooHighException : public std::exception {
             public:
-                virtual const char* what(void) const throw(void);
+                virtual const char* what(void) const throw();
         };
 
         class GradeTooLowException : public std::exception {
             public:
-                virtual const char* what(void) const throw(void);
+                virtual const char* what(void) const throw();
         };
 
         friend std::ostream& operator<<(std::ostream &os, const Bureaucrat &b);
