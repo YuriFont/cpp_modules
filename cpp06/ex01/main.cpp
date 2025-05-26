@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Data.hpp"
-#include "Serializer.cpp"
+#include "Serializer.hpp"
 
 int main() {
     Data* data = new Data(42, "Teste");
