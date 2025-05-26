@@ -3,31 +3,23 @@
 #include "Serializer.cpp"
 
 int main() {
-    // Criar um objeto Data
     Data* data = new Data(42, "Teste");
 
-    // Exibir conteúdo original
     std::cout << "Data original: id = " << data->id << ", name = " << data->name << std::endl;
     std::cout << "Ponteiro original: " << data << std::endl;
 
-    // Serializar o ponteiro
     uintptr_t serialized = Serializer::serialize(data);
     std::cout << "Valor serializado: " << serialized << std::endl;
 
-    // Desserializar o valor
     Data* deserialized = Serializer::deserialize(serialized);
     std::cout << "Ponteiro desserializado: " << deserialized << std::endl;
 
-    // Verificar se o ponteiro desserializado é igual ao original
     if (data == deserialized) {
         std::cout << "Sucesso: Ponteiros são iguais!" << std::endl;
         std::cout << "Data desserializada: id = " << deserialized->id << ", name = " << deserialized->name << std::endl;
-    } else {
+    } else
         std::cout << "Erro: Ponteiros são diferentes!" << std::endl;
-    }
 
-    // Liberar memória
     delete data;
-
     return 0;
 }
