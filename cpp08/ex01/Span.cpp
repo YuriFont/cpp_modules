@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Span.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yufonten <yufonten@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/02 11:44:31 by yufonten          #+#    #+#             */
+/*   Updated: 2025/06/02 11:44:31 by yufonten         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Span.hpp"
 
 Span::Span(void): maxSize(5) {
@@ -30,11 +42,10 @@ void	Span::addNumber(int number) {
 
 int	Span::shortestSpan(void) {
 	if (numbers.size() <= 1)
-		throw runtime_error("Not enough numbers to find span");
+		throw std::runtime_error("Not enough numbers to find span");
 
 	std::vector<int> sortedSpan = numbers;
 	std::sort(sortedSpan.begin(), sortedSpan.end());
-
 	int minSpan = INT_MAX;
 	for (std::vector<int>::iterator it = sortedSpan.begin() + 1; it != sortedSpan.end(); ++it) {
 		int diff = *it - *(it - 1);
@@ -46,7 +57,7 @@ int	Span::shortestSpan(void) {
 
 int	Span::longestSpan(void) {
 	if (numbers.size() <= 1)
-		throw runtime_error("Not enough numbers to find span");
+		throw std::runtime_error("Not enough numbers to find span");
 
 	std::vector<int>::iterator minIt = std::min_element(numbers.begin(), numbers.end());
 	std::vector<int>::iterator maxIt = std::max_element(numbers.begin(), numbers.end());
