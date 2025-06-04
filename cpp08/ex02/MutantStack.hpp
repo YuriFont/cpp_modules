@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 18:43:19 by yufonten          #+#    #+#             */
-/*   Updated: 2025/06/02 19:05:50 by yufonten         ###   ########.fr       */
+/*   Updated: 2025/06/04 11:22:34 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,26 @@
 #include <stack>
 #include <iterator>
 
-
 template <typename T>
 class MutantStack : public std::stack<T> {
   
     public:
 
+        MutantStack(void);
+        MutantStack(const MutantStack &ms);
+        ~MutantStack(void);
+        MutantStack &operator=(const MutantStack &ms);
+
         typedef typename std::stack<T>::container_type::iterator iterator;
         typedef typename std::stack<T>::container_type::const_iterator const_iterator;
         
-        iterator begin(void) {
-            return this->c.begin();
-        }
-
-        iterator end(void) {
-            return this->c.end();
-        }
-
-        const_iterator begin(void) const {
-            return this->c.begin();
-        }
-
-        const_iterator end(void) const {
-            return this->c.end();
-        }
+        iterator begin(void);
+        iterator end(void);
+        const_iterator begin(void) const;
+        const_iterator end(void) const;
 
 };
+
+#include "MutantStack.tpp"
 
 #endif
