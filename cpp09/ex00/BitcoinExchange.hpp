@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 11:00:33 by yufonten          #+#    #+#             */
-/*   Updated: 2025/06/10 11:36:34 by yufonten         ###   ########.fr       */
+/*   Updated: 2025/06/11 11:45:02 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,11 @@ class BitcoinExchange {
 
         std::map<std::string, float> _database;
         void    _loadDatabase(void);
-        void    print(void);
+        bool    _checkDate(const std::string date);
+        bool    _isDigitsOnly(const std::string &str);
+        int     _getMaxDaysInMonth(int month, int year);
+        bool    _isLeapYear(int year);
+        bool    _checkValue(const std::string &valueStr, float &value);
     
     public:
 
@@ -34,6 +38,7 @@ class BitcoinExchange {
         BitcoinExchange(const BitcoinExchange &btc);
         BitcoinExchange &operator=(const BitcoinExchange &btc);
         ~BitcoinExchange(void);
+        void    processData(const std::string &file);
 
         class CouldNotOpenFile : public std::exception {
             public:
@@ -42,10 +47,17 @@ class BitcoinExchange {
                 }
         };
 
-        class ColumnWithError : public std::exception {
+        class DataFileHeaderError : public std::exception {
             public:
                 virtual const char* what(void) const throw() {
-                    return "Error: Column with error. Expected: date,exchange_rate";
+                    return "Error: Header in data.csv with error. Expected: date,exchange_rate";
+                }
+        };
+
+        class InputFileHeaderError : public std::exception {
+            public:
+                virtual const char* what(void) const throw() {
+                    return "Error: Header in input file with error. Expected: date | value";
                 }
         };
 
