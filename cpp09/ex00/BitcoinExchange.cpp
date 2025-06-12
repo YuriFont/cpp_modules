@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 10:29:11 by yufonten          #+#    #+#             */
-/*   Updated: 2025/06/11 11:46:18 by yufonten         ###   ########.fr       */
+/*   Updated: 2025/06/12 10:47:26 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int BitcoinExchange::_getMaxDaysInMonth(int month, int year) {
     }
 }
 
-bool    BitcoinExchange::_checkDate(const std::string date) {
+bool    BitcoinExchange::_checkDate(const std::string date, int &yearI, int &monthI, int &dayI) {
     if (date.size() != 10 || date[4] != '-' || date[7] != '-')
         return false;
 
@@ -96,10 +96,10 @@ bool    BitcoinExchange::_checkDate(const std::string date) {
     std::string day = date.substr(8, 2);
     if (!_isDigitsOnly(year) || !_isDigitsOnly(month) || !_isDigitsOnly(day)) return false;
 
-    int monthI = std::atoi(month.c_str());
+    monthI = std::atoi(month.c_str());
     if (monthI > 12) return false;
-    int dayI = std::atoi(day.c_str());
-    int yearI = std::atoi(year.c_str());
+    dayI = std::atoi(day.c_str());
+    yearI = std::atoi(year.c_str());
     if (dayI > _getMaxDaysInMonth(monthI, yearI)) return false;
     
     return true;
@@ -112,6 +112,16 @@ bool    BitcoinExchange::_checkValue(const std::string &valueStr, float &value) 
     if (value < 0) return false;
     if (value > 1000) return false;
     return true;
+}
+
+std::string BitcoinExchange::_formatFloat(float value) {
+    std::stringstream ss;
+    ss << std::fixed << std::setprecision(2) << value;
+    std::string str = ss.str();
+
+    if (str.length() > 0 && str[str.length() - 1] == '0')
+        str.erase(str.length() - 1);
+    return str;
 }
 
 void    BitcoinExchange::processData(const std::string &filename) {
@@ -127,12 +137,13 @@ void    BitcoinExchange::processData(const std::string &filename) {
     while (std::getline(file, line)) {
         std::stringstream ss(line);
         std::string date, valueStr, delimiter;
+        int yearI, monthI, dayI;
 
         if (!std::getline(ss, date, ' ') || !std::getline(ss, delimiter, ' ') || delimiter != "|" || !std::getline(ss, valueStr)) {
             std::cout << "Error: bad input => " << line << std::endl;
             continue;
         }
-        if (!_checkDate(date)) {
+        if (!_checkDate(date, yearI, monthI, dayI)) {
             std::cout << "Error: invalid date => " << date << std::endl;
             continue;
         }
@@ -144,6 +155,20 @@ void    BitcoinExchange::processData(const std::string &filename) {
                 std::cout << "Error: too large a number." << std::endl;
             continue;
         }
-        
+        std::map<std::string, float>::const_iterator it = _database.lower_bound(date);
+        if (it == _database.end()) {
+            if (_database.empty()) {
+                std::cout << "Error: no database entry for date " << date << std::endl;
+                continue;
+            }
+            it--;
+        } else if (it->first != date && it == _database.begin()) {
+            std::cout << "Error: no earlier date available for " << date << std::endl;
+            continue;
+        } else if (it->first != date)
+            it--;
+        float result = value * it->second;
+        std::cout << date << " => " << value << " = " << std::fixed << std::setprecision(2) << _formatFloat(result) << std::endl;
     }
+    file.close();
 }
