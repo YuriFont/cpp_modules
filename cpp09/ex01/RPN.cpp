@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.hpp                                     :+:      :+:    :+:   */
+/*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yufonten <yufonten@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/26 11:54:18 by yufonten          #+#    #+#             */
-/*   Updated: 2025/05/26 11:55:00 by yufonten         ###   ########.fr       */
+/*   Created: 2025/06/14 15:16:15 by yufonten          #+#    #+#             */
+/*   Updated: 2025/06/14 15:16:17 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERIALIZER_HPP
-#define SERIALIZER_HPP
+#include "RPN.hpp"
 
-#include <stdint.h>
-#include "Data.hpp"
+RPN::RPN(void) {}
 
-class Serializer {
-    
-    private:
-    
-        Serializer(void);
-        Serializer(const Serializer&);
-        Serializer& operator=(const Serializer&);
-        ~Serializer(void);
+RPN::RPN(const RPN &rpn) {
+    if (this != &rpn)
+        *this = rpn;
+}
 
-    public:
+RPN &RPN::operator=(const RNP &rpn) {
+    if (this != &rpn)
+        *this = rpn;
+    return *this;
+}
 
-        static uintptr_t serialize(Data* ptr);
-        static Data* deserialize(uintptr_t raw);
+RPN::~RPN(void) {}
 
-};
-
-#endif
+void    RPN::calculate(const std::string str) {
+    if (str.empty())
+        throw std::runtime_error("Error: empty expression.");
+}

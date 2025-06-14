@@ -101,6 +101,7 @@ void    ScalarConverter::convert(const std::string &str) {
         std::cout << "impossible" << std::endl;
     else
         std::cout << "Non displayable" << std::endl;
+    
     std::cout << "int: ";
     if (isCharLiteral)
         std::cout << static_cast<int>(charValue) << std::endl;
@@ -112,6 +113,7 @@ void    ScalarConverter::convert(const std::string &str) {
         std::cout << static_cast<int>(doubleValue) << std::endl;
     else
         std::cout << "impossible" << std::endl;
+
     std::cout << "float: ";
     if (isCharLiteral)
         std::cout << static_cast<float>(charValue) << ".0f" << std::endl;
@@ -137,6 +139,7 @@ void    ScalarConverter::convert(const std::string &str) {
         std::cout << "f" << std::endl;
     } else
         std::cout << "impossible" << std::endl;
+
     std::cout << "double: ";
     if (isCharLiteral)
         std::cout << static_cast<double>(charValue) << ".0" << std::endl;

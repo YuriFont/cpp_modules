@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.hpp                                     :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yufonten <yufonten@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/26 11:54:18 by yufonten          #+#    #+#             */
-/*   Updated: 2025/05/26 11:55:00 by yufonten         ###   ########.fr       */
+/*   Created: 2025/06/14 15:15:55 by yufonten          #+#    #+#             */
+/*   Updated: 2025/06/14 15:15:59 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERIALIZER_HPP
-#define SERIALIZER_HPP
+#include "RPN.hpp"
 
-#include <stdint.h>
-#include "Data.hpp"
-
-class Serializer {
-    
-    private:
-    
-        Serializer(void);
-        Serializer(const Serializer&);
-        Serializer& operator=(const Serializer&);
-        ~Serializer(void);
-
-    public:
-
-        static uintptr_t serialize(Data* ptr);
-        static Data* deserialize(uintptr_t raw);
-
-};
-
-#endif
+int main(int ac, char **av) {
+    if (ac != 2) {
+        std::cout << "Error\n";
+        return 1;
+    }
+    RPN rpn;
+    rpn.calculate(av[1]);
+    return 0;
+}
