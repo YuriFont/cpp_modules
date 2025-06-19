@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:16:35 by yufonten          #+#    #+#             */
-/*   Updated: 2025/06/14 15:16:41 by yufonten         ###   ########.fr       */
+/*   Updated: 2025/06/19 15:01:58 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 
 #include <iostream>
 #include <stack>
+#include <sstream>
+#include <string>
 
 class RPN {
 
     private:
 
-        stack<int>  stackNumbers;
+        std::stack<int>  stackNumbers;
 
     public:
 
@@ -28,7 +30,7 @@ class RPN {
         RPN(const RPN &rpn);
         ~RPN(void);
         RPN &operator=(const RPN &rpn);
-        void    calculate(const std::string str);
+        int calculate(const std::string &str);
 
 };
 

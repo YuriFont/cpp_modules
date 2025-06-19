@@ -1,4 +1,4 @@
-NAME = btc
+NAME = RPN
 FILES = main.cpp\
 		RPN.cpp
 CP = c++

@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:15:55 by yufonten          #+#    #+#             */
-/*   Updated: 2025/06/14 15:15:59 by yufonten         ###   ########.fr       */
+/*   Updated: 2025/06/19 12:41:26 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,5 @@ int main(int ac, char **av) {
         return 1;
     }
     RPN rpn;
-    rpn.calculate(av[1]);
-    return 0;
+    return rpn.calculate(av[1]);
 }
