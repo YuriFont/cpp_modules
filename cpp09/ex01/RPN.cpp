@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:16:15 by yufonten          #+#    #+#             */
-/*   Updated: 2025/06/19 18:03:23 by yufonten         ###   ########.fr       */
+/*   Updated: 2025/06/21 17:39:32 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,21 @@ RPN &RPN::operator=(const RPN &rpn) {
 
 RPN::~RPN(void) {}
 
+void printStack(std::stack<int> s) {
+    while (!s.empty()) {
+        std::cout << s.top() << " ";
+        s.pop();
+    }
+    std::cout << std::endl;
+}
+
 int RPN::calculate(const std::string &str) {
     std::stringstream ss(str);
     std::string token;
 
     while (ss >> token) {
         if (token == "+" || token == "-" || token == "*" || token == "/") {
-            if (stackNumbers.size() != 2) {
+            if (stackNumbers.size() < 2) {
                 std::cout << "Error: invalid expression\n";
                 return 1;
             }
@@ -42,17 +50,17 @@ int RPN::calculate(const std::string &str) {
             int b = stackNumbers.top();
             stackNumbers.pop();
             if (token == "+")
-                stackNumbers.push(a + b);
+                stackNumbers.push(b + a);
             else if (token == "-")
-                stackNumbers.push(a - b);
+                stackNumbers.push(b - a);
             else if (token == "*")
-                stackNumbers.push(a * b);
+                stackNumbers.push(b * a);
             else if (token == "/") {
                 if (b == 0) {
                     std::cout << "Error: division by zero\n";
                     return 1;
                 }
-                stackNumbers.push(a / b);
+                stackNumbers.push(b / a);
             } 
         } else {
             int n;

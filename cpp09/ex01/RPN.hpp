@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:16:35 by yufonten          #+#    #+#             */
-/*   Updated: 2025/06/19 15:01:58 by yufonten         ###   ########.fr       */
+/*   Updated: 2025/06/21 17:16:09 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <stack>
 #include <sstream>
 #include <string>
+#include <cstdlib>
 
 class RPN {
 

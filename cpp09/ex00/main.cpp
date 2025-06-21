@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 10:05:33 by yufonten          #+#    #+#             */
-/*   Updated: 2025/06/11 09:13:40 by yufonten         ###   ########.fr       */
+/*   Updated: 2025/06/12 11:02:45 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int main(int ac, char **av) {
         std::cerr << "Error: could not open file." << std::endl;
         return 1;
     }
-    (void)av;
     try {
         BitcoinExchange exchange;
         exchange.processData(av[1]);
