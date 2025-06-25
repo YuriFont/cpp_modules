@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 09:53:24 by yufonten          #+#    #+#             */
-/*   Updated: 2025/06/23 10:33:16 by yufonten         ###   ########.fr       */
+/*   Updated: 2025/06/24 19:31:49 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <iostream>
 #include <vector>
 #include <deque>
+#include <cstdlib>
+#include <ctime>
 
 class PmergeMe {
   
@@ -25,6 +27,7 @@ class PmergeMe {
         std::deque<int> _deq;
         double _vecTime;
         double _deqTime;
+        bool    _isPositiveInteger(const char *str);
 
     public:
 
@@ -32,7 +35,8 @@ class PmergeMe {
         PmergeMe(const PmergeMe &pm);
         ~PmergeMe(void);
         PmergeMe    &operator=(const PmergeMe &pm);
-        
+        int parseInput(const int ac, const char **av);
+        int sort(void);
 
 };
 
