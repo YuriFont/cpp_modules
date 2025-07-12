@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 09:49:11 by yufonten          #+#    #+#             */
-/*   Updated: 2025/06/24 10:22:13 by yufonten         ###   ########.fr       */
+/*   Updated: 2025/07/12 15:13:54 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ int main(int ac, char **av) {
     }
     
     PmergeMe pm;
-    if (pm.parseInput(ac, (const char **)av) || pm.sort())
+    if (!pm.parseInput(ac, (const char **)av))
         return 1;
+    
+    pm.sort();
+    pm.displayResults();
 
     return 0;
 }
