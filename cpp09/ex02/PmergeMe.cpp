@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 10:29:43 by yufonten          #+#    #+#             */
-/*   Updated: 2025/07/12 15:30:02 by yufonten         ###   ########.fr       */
+/*   Updated: 2025/07/12 15:42:51 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,10 @@ void    PmergeMe::merge(Container &arr, int left, int mid, int right) {
             arr[k++] = rightArr[j++];
         }
     }
-    while (i < static_cast<int>(leftArr.size())) arr[k++] = leftArr[i++];
-    while (j < static_cast<int>(rightArr.size())) arr[k++] = rightArr[j++];
+    while (i < static_cast<int>(leftArr.size())) 
+        arr[k++] = leftArr[i++];
+    while (j < static_cast<int>(rightArr.size()))
+        arr[k++] = rightArr[j++];
 }
 
 void    PmergeMe::mergeInsertSortVector(std::vector<int> &arr, int left, int right, int threshold) {
