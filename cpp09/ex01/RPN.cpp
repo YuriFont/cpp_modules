@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:16:15 by yufonten          #+#    #+#             */
-/*   Updated: 2025/06/21 17:39:32 by yufonten         ###   ########.fr       */
+/*   Updated: 2026/01/05 15:19:02 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int RPN::calculate(const std::string &str) {
             else if (token == "*")
                 stackNumbers.push(b * a);
             else if (token == "/") {
-                if (b == 0) {
+                if (a == 0) {
                     std::cout << "Error: division by zero\n";
                     return 1;
                 }

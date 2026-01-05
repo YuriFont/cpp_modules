@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yufonten <yufonten@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/23 09:53:24 by yufonten          #+#    #+#             */
-/*   Updated: 2025/07/12 15:27:16 by yufonten         ###   ########.fr       */
+/*   Created: 2025/01/05 12:00:00 by yufonten          #+#    #+#             */
+/*   Updated: 2026/01/05 14:18:21 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,36 +16,38 @@
 #include <iostream>
 #include <vector>
 #include <deque>
-#include <cstdlib>
+#include <algorithm>
+#include <sstream>
 #include <ctime>
 #include <iomanip>
+#include <stdexcept>
+#include <climits>
+#include <string>
 
 class PmergeMe {
-  
     private:
+        std::vector<int>    _vec;
+        std::deque<int>     _deq;
+        double              _vecTime;
+        double              _deqTime;
 
-        std::vector<int> _vec;
-        std::deque<int> _deq;
-        double _vecTime;
-        double _deqTime;
-        bool    _isValidNumber(const char *str);
-        template <typename Container>
-        void    insertionSort(Container& arr, int left, int right);
-        template <typename Container>
-        void    merge(Container& arr, int left, int mid, int right);
-        void    mergeInsertSortVector(std::vector<int>& arr, int left, int right, int threshold);
-        void    mergeInsertSortDeque(std::deque<int>& arr, int left, int right, int threshold);
+        bool    _isValidNumber(const std::string& str);
+        void    _pairAndSwapVector();
+        void    _recursiveSortBigsVector(size_t start, size_t end);
+        void    _binaryInsertSmallsVector();
+        void    _pairAndSwapDeque();
+        void    _recursiveSortBigsDeque(size_t start, size_t end);
+        void    _binaryInsertSmallsDeque();
 
     public:
-
-        PmergeMe(void);
-        PmergeMe(const PmergeMe &pm);
-        ~PmergeMe(void);
-        PmergeMe    &operator=(const PmergeMe &pm);
-        bool    parseInput(const int ac, const char **av);
-        void    sort(void);
-        void    displayResults(void);
-
+        PmergeMe();
+        PmergeMe(const PmergeMe& other);
+        ~PmergeMe();
+        PmergeMe& operator=(const PmergeMe& other);
+        
+        bool    parseInput(int ac, char** av);
+        void    sort();
+        void    display();
 };
 
 #endif
